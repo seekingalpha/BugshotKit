@@ -300,7 +300,8 @@ static UIImage *rotateIfNeeded(UIImage *src);
     if (log && ! log.length) log = nil;
     
     NSString *appNameString = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleDisplayName"];
-    NSString *appVersionString = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
+    NSString *appVersionString = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
+    NSString *appBuildString = [NSBundle.mainBundle objectForInfoDictionaryKey:@"CFBundleVersion"];
 
     size_t size;
     sysctlbyname("hw.machine", NULL, &size, NULL, 0); 
@@ -312,6 +313,7 @@ static UIImage *rotateIfNeeded(UIImage *src);
     NSDictionary *userInfo = @{
         @"appName" : appNameString,
         @"appVersion" : appVersionString,
+        @"build" : appBuildString,
         @"systemVersion" : UIDevice.currentDevice.systemVersion,
         @"deviceModel" : modelIdentifier,
     };
@@ -332,7 +334,7 @@ static UIImage *rotateIfNeeded(UIImage *src);
     }
     
     mf.toRecipients = [BugshotKit.sharedManager.destinationEmailAddress componentsSeparatedByString:@","];
-    mf.subject = BugshotKit.sharedManager.emailSubjectBlock ? BugshotKit.sharedManager.emailSubjectBlock(userInfo) : [NSString stringWithFormat:@"%@ %@ Feedback", appNameString, appVersionString];
+    mf.subject = BugshotKit.sharedManager.emailSubjectBlock ? BugshotKit.sharedManager.emailSubjectBlock(userInfo) : [NSString stringWithFormat:@"%@ %@ (%@) Feedback", appNameString, appVersionString, appBuildString];
     [mf setMessageBody:BugshotKit.sharedManager.emailBodyBlock ? BugshotKit.sharedManager.emailBodyBlock(userInfo) : nil isHTML:NO];
 
     if (screenshot) [mf addAttachmentData:UIImagePNGRepresentation(rotateIfNeeded(screenshot)) mimeType:@"image/png" fileName:@"screenshot.png"];

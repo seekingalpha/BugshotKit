@@ -107,6 +107,8 @@ static UIImage *rotateIfNeeded(UIImage *src);
     CGFloat toggleWidth = UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone && UIInterfaceOrientationIsLandscape(self.interfaceOrientation) ? 44 : 74;
     
     self.includeScreenshotToggle = [[BSKToggleButton alloc] initWithFrame:CGRectMake(0, 0, toggleWidth, toggleWidth)];
+    self.includeScreenshotToggle.enabled = NO;
+    self.includeScreenshotToggle.hidden = YES;
     self.includeScreenshotToggle.on = YES;
     [self.includeScreenshotToggle addTarget:self action:@selector(includeScreenshotToggled:) forControlEvents:UIControlEventValueChanged];
     self.includeScreenshotToggle.translatesAutoresizingMaskIntoConstraints = NO;
@@ -114,6 +116,8 @@ static UIImage *rotateIfNeeded(UIImage *src);
     [screenshotContainer addSubview:self.includeScreenshotToggle];
 
     self.includeLogToggle = [[BSKToggleButton alloc] initWithFrame:CGRectMake(0, 0, toggleWidth, toggleWidth)];
+    self.includeLogToggle.enabled = NO;
+    self.includeLogToggle.hidden = YES;
     self.includeLogToggle.on = YES;
     [self.includeLogToggle addTarget:self action:@selector(includeLogToggled:) forControlEvents:UIControlEventValueChanged];
     self.includeLogToggle.translatesAutoresizingMaskIntoConstraints = NO;

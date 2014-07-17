@@ -52,6 +52,14 @@ static UIImage *rotateIfNeeded(UIImage *src);
 {
     [super viewDidLoad];
 
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"BugshotKitShownOnce"]) {
+        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Draw in the screenshot" message:@"To help us understanding the problem, you can tap in the screenshot, and then draw an arrow or square to indicate the bug visually, if needed" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alertView show];
+        
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"BugshotKitShownOnce"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    
     CGSize chevronSize = CGSizeMake(15, 30);
     UIImage *chevronImage = BSKImageWithDrawing(chevronSize, ^{
         CGRect chevronBounds = CGRectMake(0, 0, chevronSize.width, chevronSize.height);

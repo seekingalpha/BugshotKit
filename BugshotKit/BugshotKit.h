@@ -6,7 +6,7 @@
 #import "BSKMainViewController.h"
 #import "BSKWindow.h"
 
-#if ! DEBUG
+#if ! DEBUG || ! BETA
 #warning BugshotKit is being included in a non-debug build.
 #endif
 

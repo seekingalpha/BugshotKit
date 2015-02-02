@@ -575,7 +575,7 @@ UIImage *BSKImageWithDrawing(CGSize size, void (^drawingCommands)())
 
 + (BOOL)isProbablyAppStoreBuild
 {
-//#if TARGET_IPHONE_SIMULATOR
+//#if TARGET_IPHONE_SIMULATOR || defined (ADHOC)
 //    return NO;
 //#endif
 //

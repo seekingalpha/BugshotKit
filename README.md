@@ -1,7 +1,7 @@
 THIS IS A FORK
 ==============
 
-**WARNING** This is a fork and wa have change the library functionality to be used in App Store builds (Testflight) and removed the call to private APIs
+**WARNING** This is a fork and wa have changed the library functionality to be used in App Store builds (Testflight) and removed the call to private APIs
 
 BugshotKit
 ==========

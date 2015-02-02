@@ -10,7 +10,7 @@
 @import CoreText;
 
 @interface UIViewController ()
-- (void)attentionClassDumpUser:(id)fp8 yesItsUsAgain:(id)fp12 althoughSwizzlingAndOverridingPrivateMethodsIsFun:(id)fp16 itWasntMuchFunWhenYourAppStoppedWorking:(id)fp20 pleaseRefrainFromDoingSoInTheFutureOkayThanksBye:(id)fp24;
+//- (void)attentionClassDumpUser:(id)fp8 yesItsUsAgain:(id)fp12 althoughSwizzlingAndOverridingPrivateMethodsIsFun:(id)fp16 itWasntMuchFunWhenYourAppStoppedWorking:(id)fp20 pleaseRefrainFromDoingSoInTheFutureOkayThanksBye:(id)fp24;
 @end
 
 NSString * const BSKNewLogMessageNotification = @"BSKNewLogMessageNotification";
@@ -206,6 +206,7 @@ UIImage *BSKImageWithDrawing(CGSize size, void (^drawingCommands)())
 
     // The purpose of this is to immediately get rejected from App Store submissions in case you accidentally submit an app with BugshotKit.
     // BugshotKit is only meant to be used during development and beta testing. Do not ship it in App Store builds.
+    /*
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     if ([UIEvent.class instancesRespondToSelector:@selector(_gsEvent)] &&
@@ -214,6 +215,7 @@ UIImage *BSKImageWithDrawing(CGSize size, void (^drawingCommands)())
         [self.window.rootViewController attentionClassDumpUser:nil yesItsUsAgain:nil althoughSwizzlingAndOverridingPrivateMethodsIsFun:nil itWasntMuchFunWhenYourAppStoppedWorking:nil pleaseRefrainFromDoingSoInTheFutureOkayThanksBye:nil];
     }
 #pragma clang diagnostic pop
+     */
 }
 
 - (void)newWindowDidBecomeVisible:(NSNotification *)n

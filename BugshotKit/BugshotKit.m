@@ -504,7 +504,7 @@ UIImage *BSKImageWithDrawing(CGSize size, void (^drawingCommands)())
     aslresponse r = asl_search(NULL, q);
     BOOL foundNewEntries = NO;
     
-    while ( (m = asl_next(r)) ) {
+    while ( (m = aslresponse_next(r)) ) {
         if (myPID != atol(asl_get(m, ASL_KEY_PID))) continue;
 
         // dupe checking

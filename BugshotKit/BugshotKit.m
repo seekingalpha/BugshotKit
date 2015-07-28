@@ -376,9 +376,12 @@ UIImage *BSKImageWithDrawing(CGSize size, void (^drawingCommands)())
     
     NSMutableSet *drawnWindows = [NSMutableSet set];
     for (UIWindow *window in UIApplication.sharedApplication.windows) {
-        [drawnWindows addObject:window];
-        [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:NO];
+        if (!CGRectEqualToRect(window.frame, CGRectZero)) {
+            [drawnWindows addObject:window];
+            [window drawViewHierarchyInRect:window.bounds afterScreenUpdates:NO];
+        }
     }
+
     
     // Must iterate through all windows we know about because UIAlertViews, etc. don't add themselves to UIApplication.windows
     for (UIWindow *window in self.windowsWithGesturesAttached) {
